@@ -1,0 +1,76 @@
+<!-- Prince John -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="string.css">
+    <title>Palindrome Checker</title>
+</head>
+<body>
+    <h1>Palindrome Checker</h1>
+    <div class="container">
+        <button onclick="checkPalindrome()">Check Palindrome</button>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script language="javascript" type="text/javascript">
+        // Function to check if a string is a palindrome
+        function yesPalindrome(str) {
+            // Remove spaces and convert to lowercase (so its case insensitive meaning that spaces and lowercases/uppercases wont affect the checker)
+            var strippedStr = str.replace(/\s/g, '').toLowerCase();
+            // This is how we check if reversed string equals original string
+            return strippedStr === strippedStr.split('').reverse().join('');
+        }
+
+        // Function to check palindromes and prompt user for input
+        function checkPalindrome() {
+            var userInput;
+            do {
+                userInput = prompt("Enter a string (or 'exit' to quit):");
+                if (userInput !== null) { // Check if user cancels
+                    if (userInput.toLowerCase() !== "exit") { // Check if user wants to exit
+                        // Check if input is a palindrome
+                        var palindrome = yesPalindrome(userInput);
+                        // Display result to user (userinput is the message they tried to check) 
+                        if (palindrome) {
+                            alert("'" + userInput + "' is a palindrome.");
+                        } else {
+                            alert("'" + userInput + "' is not a palindrome.");
+                        }
+                    }
+                }
+                // a do while loop that continues unless the user cancels the prompt or types exit.
+            } while (userInput !== null && userInput.toLowerCase() !== "exit");
+        }
+    </script>
+</body>
+</html>
+
+
+Css=
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    text-align: center;
+    padding-top: 50px;
+}
+h1 {
+    color: black;
+}
+.container {
+    margin-top: 20px;
+}
+button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.result {
+    margin-top: 20px;
+}
